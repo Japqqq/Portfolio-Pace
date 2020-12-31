@@ -1,0 +1,27 @@
+body{
+    background: url("/static/Fiverr.jpg") 100% 0 no-repeat fixed;
+    background-color:#9c807c;
+    background-size: 600px 00px;
+     background-attachment: fixed;
+   background-position: center;
+  }
+  .navbar-inner{
+     background-color: transparent;
+     	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+  };
+  .nav-link{
+    color: white;
+  }
+  .navbar-brand{
+    color: white;
+  }
+  .navbar.center .navbar-inner {
+    text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+    display:inline-block;
+    float: none;
+}
