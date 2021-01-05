@@ -1,64 +1,144 @@
-<!doctype html>
+@import url('https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap');
 <style>
+$all: all .5s ease;
+$sai: 'Saira Semi Condensed', sans-serif;
+
+*{
+    @include tf($tf-fm: $sai);
+    @include other($ot-tsi: $all)
+}
+
 body{
-    background: url("/static/Fiverr.jpg") 100% 0 no-repeat fixed;
-    background-color:#9c807c;
-    background-size: 600px 00px;
-     background-attachment: fixed;
-   background-position: center;
-  }
-  .navbar-inner{
-     background-color: transparent;
-     	min-width: 696px;
-	list-style: none;
-	padding-top: 20px;
-  };
-  .nav-link{
-    color: white;
-  }
-  .navbar-brand{
-    color: white;
-  }
-  .navbar.center .navbar-inner {
-    text-align: center;
+    background: #dfdfdf
 }
 
-.navbar.center .navbar-inner .nav {
-    display:inline-block;
-    float: none;
+.container{
+    @include bm(100%, 100%, $bm-pd: 0 16px, $bm-dp: $fl);
+    @include flex-center($rnw)
 }
 
+form{
+    @include bm(400px, $bm-dp: $fl);
+    @include flex-center($cw);
+        div, label, input, textarea{
+            @include bm(100%)
+        }
+}
 
+.field:nth-of-type(2){
+    @include bm($bm-mg: 16px 0)
+}
 
+label, input, textarea{
+    @include bm($bm-pd: 8px)
+}
 
+label, [placeholder]{
+    @include tf(#555)
+}
 
+label i{
+    @include bm($bm-mg: 0 10px 0 0)
+}
+
+.field:focus-within label{
+    @include tf(#000, $tf-ls: 2px)
+}
+
+input, textarea{
+    background: rgba(255,255,255,.5);
+    border: none;
+    @include other($ot-br: 4px, $ot-bs: $o-b);
+        &:focus{
+            background: rgba(255,255,255,1);
+            @include other($ot-bs: none)
+        }
+}
+
+textarea{
+    resize: none;
+        &::-webkit-scrollbar{
+            @include bm(0)
+        }
+}
+
+button{
+    background: #2f4ad0;
+    .include bm($bm-pd: 8px 16px, $bm-mg: 16px 0 50px 0);
+    .include tf(#fff);
+    border: none;
+    .include other($ot-br: 4px, $ot-cr: pointer, $ot-bs: $o-b);
+        &:hover{
+            @include tf($tf-ls: 2px);
+            @include other($ot-bs: none)
+        }
+}
+
+.social-media{
+    .include bm($bm-dp: $fl);
+    .include fb($rw, $fb-jc: $sa);
+        :not(&){
+            @include tf($tf-fs: 14px)
+        }
+        span{
+            @include tf($tf-fs: 16px)
+        }
+        span .fas{
+            @include bm($bm-mg: 0 0 0 10px)
+        }
+        a{
+            @include tf(#000, $tf-fs: 20px)
+        }
+}
+
+.media (max-width: 425px){
+    form{
+        @include bm(100%)
+    }
+}
 </style>
-{% load static %}
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
- 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-    <title>Home</title>
-  </head>
-  <body>
-  <div class = "navbar">
-    <ul>
-        <li><a href = "/"> Home</a>></li>
-          <li><a href = "/"> Products</a>></li>
-            <li><a href = "/"> Contact</a>></li>
-    </ul>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
-{% block body %}
-{% endblock body %}
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+	<form>
+		<div class="field" tabindex="1">
+			<label for="username">
+				<i class="far fa-user"></i>Your Name
+			</label>
+			<input name="username" type="text" placeholder="e.g. john doe" required>
+		</div>
+		<div class="field" tabindex="2">
+			<label for="email">
+				<i class="far fa-envelope"></i>Your Email
+			</label>
+			<input name="email" type="text" placeholder="email@domain.com" required>
+		</div>
+		<div class="field" tabindex="3">
+			<label for="message">
+				<i class="far fa-edit"></i>Your Message
+			</label>
+			<textarea name="message" placeholder="type here" required></textarea>
+		</div>
+		<button type="reset">Send Me Message</button>
+		<div class="social-media">
+			<span>
+				Get In Touch<i class="fas fa-long-arrow-alt-right"></i>
+			</span>
+			<a class="fab fa-facebook-f" href="https://facebook.com/uzcho" target="blank_"></a>
+			<a class="fab fa-twitter" href="https://twitter.com/uzcho_" target="blank_"></a>
+			<a class="fab fa-instagram" href="https://www.instagram.com/uzcho_" target="blank_"></a>
+			<a class="fab fa-codepen" href="https://codepen.io/uzcho_" target="blank_"></a>
+		</div>
+	</form>
+</div>
+</body>
 </html>
+
+<!-- This is not part of Pen -->
+<a class="me" href="https://codepen.io/uzcho_/pens/popular/?grid_type=list" target="_blank" style="color:#000"></a>

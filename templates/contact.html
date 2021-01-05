@@ -37,10 +37,7 @@
   .navs a:hover{
       
   
-  left: 25%;
-  right: 25%;
-  
-  border: .5px solid #ffcc99;
+  color: white;
   }
   h1{
       
@@ -52,7 +49,38 @@
   .form-group{
       text-align:center;
   }
+input[type=text], select, textarea {  
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
 
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color: #ffcc99;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  background-color: #ffcc99;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: #9c807c;
+  padding: 20px;
+}
 
 
 
@@ -86,19 +114,20 @@
      {% csrf_token %}
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="email" name = "email" placeholder="name@example.com">
+   {{form.email}}
   </div>
   <div class="form-group">
     <label for="Name">Name</label>
-    <input type="text" class="form-control" id="name" name = "name" placeholder="Your Name">
+    {{form.name}}
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="desc" name = "desc" rows="3"></textarea>
+    {{form.TA}}
   </div>
 
- <button style = "ext-align:center;" type="submit" class="btn btn-outline-primary">Submit</button>
+   <input class="btn btn-secondary" type = 'submit' name = 'Submit' >
   </div>
+  </form>
 </body>
 </html>
 
